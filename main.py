@@ -15,7 +15,7 @@ img_list = [img1, img2, img3, img4, img5]
 img_lbl = Label(root, image=img_list[0])
 img_lbl.grid(row=0, column=0, columnspan=3)
 
-status_lbl = Label(root, text='Image 1 of 5')
+status_lbl = Label(root, text=f'Image 1 of {len(img_list)}', bd=3, relief=SUNKEN, anchor=E)
 
 
 def nextImage(img_num: int):
@@ -27,8 +27,8 @@ def nextImage(img_num: int):
     if img_num == 5:
         btn_next = Button(root, text='>>', state=DISABLED)
     img_lbl.grid(row=0, column=0, columnspan=3)
-    btn_next.grid(row=1, column=2)
-    btn_prev.grid(row=1, column=0)
+    btn_next.grid(row=2, column=2)
+    btn_prev.grid(row=2, column=0)
 
 
 def prevImage(img_num: int):
@@ -40,16 +40,21 @@ def prevImage(img_num: int):
     if img_num == 1:
         btn_prev = Button(root, text='<<', state=DISABLED)
     img_lbl.grid(row=0, column=0, columnspan=3)
-    btn_next.grid(row=1, column=2)
-    btn_prev.grid(row=1, column=0)
+    btn_next.grid(row=2, column=2)
+    btn_prev.grid(row=2, column=0)
 
 
-btn_exit = Button(root, text='EXIT', command=root.quit)
-btn_exit.grid(row=1, column=1)
-btn_next = Button(root, text='>>', command=lambda: nextImage(2))
-btn_next.grid(row=1, column=2)
-btn_prev = Button(root, text='<<', command=prevImage, state=DISABLED)
-btn_prev.grid(row=1, column=0)
+btn_exit = Button(root, text='EXIT', command=root.quit, pady=5)
+btn_exit.grid(row=2, column=1)
+btn_next = Button(root, text='>>', command=lambda: nextImage(2), pady=5)
+btn_next.grid(row=2, column=2)
+btn_prev = Button(root, text='<<', command=prevImage, state=DISABLED, pady=5)
+btn_prev.grid(row=2, column=0)
+gap_lbl1 = Label(root)
+gap_lbl2 = Label(root)
+gap_lbl1.grid(row=3, column=0, columnspan=3)
+gap_lbl2.grid(row=1, column=0, columnspan=3)
+status_lbl.grid(row=4, column=0, columnspan=3, sticky=W+E)
 
 if __name__ == '__main__':
     root.mainloop()
