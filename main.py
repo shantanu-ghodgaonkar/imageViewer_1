@@ -1,7 +1,6 @@
 from tkinter import *
 from PIL import ImageTk, Image
 
-
 root = Tk()
 root.title('Tkinter Image Viewer')
 root.iconbitmap('S:/Study+Work/Python/TkinterTester/icons/icons8-shark-64.ico')
@@ -16,13 +15,21 @@ img_list = [img1, img2, img3, img4, img5]
 img_lbl = Label(root, image=img_list[1])
 img_lbl.grid(row=0, column=0, columnspan=3)
 
+
+def nextImage():
+    global img_lbl, btn_next, btn_prev
+
+
+def prevImage():
+    global img_lbl, btn_next, btn_prev
+
+
 btn_exit = Button(root, text='EXIT', command=root.quit)
 btn_exit.grid(row=1, column=1)
-btn_next = Button(root, text='>>')
+btn_next = Button(root, text='>>', command=lambda: nextImage(2))
 btn_next.grid(row=1, column=2)
-btn_prev = Button(root, text='<<')
+btn_prev = Button(root, text='<<', command=lambda: prevImage)
 btn_prev.grid(row=1, column=0)
-
 
 if __name__ == '__main__':
     root.mainloop()
