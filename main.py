@@ -22,33 +22,37 @@ def nextImage(img_num: int):
     global img_lbl, btn_next, btn_prev
     img_lbl.grid_forget()
     img_lbl = Label(root, image=img_list[img_num - 1])
-    btn_next = Button(root, text='>>', command=lambda: nextImage(img_num+1))
-    btn_prev = Button(root, text='<<', command=lambda: prevImage(img_num-1))
+    btn_next = Button(root, text='>>', command=lambda: nextImage(img_num+1), padx=10, pady=8, bd=5)
+    btn_prev = Button(root, text='<<', command=lambda: prevImage(img_num-1), padx=10, pady=8, bd=5)
+    status_lbl = Label(root, text=f'Image {img_num} of {len(img_list)}', bd=3, relief=SUNKEN, anchor=E)
     if img_num == 5:
-        btn_next = Button(root, text='>>', state=DISABLED)
+        btn_next = Button(root, text='>>', state=DISABLED, padx=10, pady=8, bd=5)
     img_lbl.grid(row=0, column=0, columnspan=3)
     btn_next.grid(row=2, column=2)
     btn_prev.grid(row=2, column=0)
+    status_lbl.grid(row=4, column=0, columnspan=3, sticky=W+E)
 
 
 def prevImage(img_num: int):
     global img_lbl, btn_next, btn_prev
     img_lbl.grid_forget()
     img_lbl = Label(root, image=img_list[img_num-1])
-    btn_next = Button(root, text='>>', command=lambda: nextImage(img_num+1))
-    btn_prev = Button(root, text='<<', command=lambda: prevImage(img_num-1))
+    btn_next = Button(root, text='>>', command=lambda: nextImage(img_num+1), padx=10, pady=8, bd=5)
+    btn_prev = Button(root, text='<<', command=lambda: prevImage(img_num-1), padx=10, pady=8, bd=5)
+    status_lbl = Label(root, text=f'Image {img_num} of {len(img_list)}', bd=3, relief=SUNKEN, anchor=E)
     if img_num == 1:
-        btn_prev = Button(root, text='<<', state=DISABLED)
+        btn_prev = Button(root, text='<<', state=DISABLED, padx=10, pady=8, bd=5)
     img_lbl.grid(row=0, column=0, columnspan=3)
     btn_next.grid(row=2, column=2)
     btn_prev.grid(row=2, column=0)
+    status_lbl.grid(row=4, column=0, columnspan=3, sticky=W+E)
 
 
-btn_exit = Button(root, text='EXIT', command=root.quit, pady=5)
+btn_exit = Button(root, text='EXIT', command=root.quit, padx=10, pady=8, bd=5)
 btn_exit.grid(row=2, column=1)
-btn_next = Button(root, text='>>', command=lambda: nextImage(2), pady=5)
+btn_next = Button(root, text='>>', command=lambda: nextImage(2), padx=10, pady=8, bd=5)
 btn_next.grid(row=2, column=2)
-btn_prev = Button(root, text='<<', command=prevImage, state=DISABLED, pady=5)
+btn_prev = Button(root, text='<<', command=prevImage, state=DISABLED, padx=10, pady=8, bd=5)
 btn_prev.grid(row=2, column=0)
 gap_lbl1 = Label(root)
 gap_lbl2 = Label(root)
