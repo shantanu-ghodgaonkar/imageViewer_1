@@ -15,6 +15,8 @@ img_list = [img1, img2, img3, img4, img5]
 img_lbl = Label(root, image=img_list[0])
 img_lbl.grid(row=0, column=0, columnspan=3)
 
+status_lbl = Label(root, text='Image 1 of 5')
+
 
 def nextImage(img_num: int):
     global img_lbl, btn_next, btn_prev
